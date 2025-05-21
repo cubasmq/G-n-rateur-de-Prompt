@@ -27,7 +27,15 @@ Contraintes : {contraintes}.
 Donne-moi la réponse sous forme de : {format_reponse}.
 """
     if question_first:
-        prompt += "Pose-moi des questions si certains éléments sont flous avant de générer la réponse."
+        prompt += " Pose-moi des questions si certains éléments sont flous avant de générer la réponse."
 
     st.subheader("📝 Prompt Généré :")
-    st.code(prompt.strip())
+    st.code(prompt.strip(), language="markdown")
+
+    # Copy-to-clipboard button
+    st.markdown(f"""
+        <button onclick="navigator.clipboard.writeText(`{prompt.strip()}`)" style="padding:10px 15px;
+        background-color:#4CAF50;border:none;color:white;border-radius:5px;cursor:pointer;margin-top:10px;">
+            📋 Copier le prompt
+        </button>
+    """, unsafe_allow_html=True)
